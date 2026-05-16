@@ -1,0 +1,33 @@
+# === IntelliJ IDEA ===
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# === Maven ===
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# === Eclipse ===
+.metadata/
+bin/
+tmp/
+.classpath
+.project
+.settings/
+*.launch
+
+# === VS Code ===
+.vscode/
+
+# === OS/Sistem Operasi ===
+.DS_Store
+Thumbs.db
