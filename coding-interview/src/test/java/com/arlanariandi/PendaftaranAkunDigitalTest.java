@@ -1,5 +1,6 @@
 package com.arlanariandi;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class PendaftaranAkunDigitalTest {
@@ -21,13 +22,28 @@ public class PendaftaranAkunDigitalTest {
         return "Pendaftaran akun digital berhasil.";
     }
 
-    @Test
-    void bukaRekeningDigital() {
-        int umur = 20;
-        String ktp = "Elektronik";
-        String kewarganegaraan = "Malaysia";
 
-        String hasilPendaftaran = validasiPendaftaranAkunDigital(umur, ktp, kewarganegaraan);
-        System.out.println(hasilPendaftaran);
+    @Test
+    void testPendaftaranBerhasil() {
+        String hasil = validasiPendaftaranAkunDigital(17, "Elektronik", "Indonesia");
+        Assertions.assertEquals("Pendaftaran akun digital berhasil.", hasil);
+    }
+
+    @Test
+    void testGagalKarenaUmurKurang() {
+        String hasil = validasiPendaftaranAkunDigital(16, "Elektronik", "Indonesia");
+        Assertions.assertEquals("Pendaftaran gagal: Umur harus minimal 17 tahun.", hasil);
+    }
+
+    @Test
+    void testGagalKarenaBukanElektronik() {
+        String hasil = validasiPendaftaranAkunDigital(17, "Non Elektornik", "Indonesia");
+        Assertions.assertEquals("Pendaftaran gagal: KTP harus elektronik.", hasil);
+    }
+
+    @Test
+    void testGagalKarenaBukanWNI() {
+        String hasil = validasiPendaftaranAkunDigital(17, "Elektronik", "Jepang");
+        Assertions.assertEquals("Pendaftaran gagal: Warga negara harus Indonesia.", hasil);
     }
 }
