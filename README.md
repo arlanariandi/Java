@@ -14,3 +14,4 @@ Setiap latihan dikelompokkan ke dalam folder khusus berdasarkan kategori atau st
 .
 ├── coding-interview/          # Persiapan Technical Interview & Live Coding
 │   └── src/test/java/com/arlanariandi/PendaftaranAkunDigitalTest.java         # Melakukan pengecekan data calon pendaftar akun digital berdasarkan 3 kriteria utama: umur, ktp elektronik dan WNI
+│   └── src/test/java/com/arlanariandi/TarikTunaiTest.java                      # Simulasi penarikan tunai dengan aturan limit transaksi

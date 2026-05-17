@@ -5,45 +5,49 @@ import org.junit.jupiter.api.Test;
 
 public class PendaftaranAkunDigitalTest {
 
-    public String validasiPendaftaranAkunDigital(int umur, String ktp, String kewarganegaraan) {
+    public boolean validasiPendaftaranAkunDigital(int umur, String ktp, String kewarganegaraan) {
 
         if (umur < 17) {
-            return "Pendaftaran gagal: Umur harus minimal 17 tahun.";
+            System.out.println("Pendaftaran gagal: Umur harus minimal 17 tahun");
+            return false;
         }
 
         if (!ktp.equalsIgnoreCase("Elektronik")) {
-            return "Pendaftaran gagal: KTP harus elektronik.";
+            System.out.println("Pendaftaran gagal: KTP harus elektronik");
+            return false;
         }
 
         if (!kewarganegaraan.equalsIgnoreCase("Indonesia")) {
-            return "Pendaftaran gagal: Warga negara harus Indonesia.";
+            System.out.println("Pendaftaran gagal: Warga negara harus Indonesia");
+            return false;
         }
 
-        return "Pendaftaran akun digital berhasil.";
+        System.out.println("Pendaftaran akun digital berhasil");
+        return true;
     }
 
 
     @Test
     void testPendaftaranBerhasil() {
-        String hasil = validasiPendaftaranAkunDigital(17, "Elektronik", "Indonesia");
-        Assertions.assertEquals("Pendaftaran akun digital berhasil.", hasil);
+        boolean hasil = validasiPendaftaranAkunDigital(17, "Elektronik", "Indonesia");
+        Assertions.assertTrue(hasil);
     }
 
     @Test
     void testGagalKarenaUmurKurang() {
-        String hasil = validasiPendaftaranAkunDigital(16, "Elektronik", "Indonesia");
-        Assertions.assertEquals("Pendaftaran gagal: Umur harus minimal 17 tahun.", hasil);
+        boolean hasil = validasiPendaftaranAkunDigital(16, "Elektronik", "Indonesia");
+        Assertions.assertFalse(hasil);
     }
 
     @Test
     void testGagalKarenaBukanElektronik() {
-        String hasil = validasiPendaftaranAkunDigital(17, "Non Elektornik", "Indonesia");
-        Assertions.assertEquals("Pendaftaran gagal: KTP harus elektronik.", hasil);
+        boolean hasil = validasiPendaftaranAkunDigital(17, "Non Elektornik", "Indonesia");
+        Assertions.assertFalse(hasil);
     }
 
     @Test
     void testGagalKarenaBukanWNI() {
-        String hasil = validasiPendaftaranAkunDigital(17, "Elektronik", "Jepang");
-        Assertions.assertEquals("Pendaftaran gagal: Warga negara harus Indonesia.", hasil);
+        boolean hasil = validasiPendaftaranAkunDigital(17, "Elektronik", "Jepang");
+        Assertions.assertFalse(hasil);
     }
 }
